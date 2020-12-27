@@ -1,0 +1,64 @@
+
+.modal-body .button-width{
+  width: 75px;
+}
+
+
+.groups{
+  padding: 2vw;
+}
+.groups .group{
+  width: 20vw;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+.groups{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.deleteButton{
+  position: relative;
+  z-index: 1;
+  background-color: red;
+  border-color: red; 
+  border-radius:80%;
+  
+}
+body{
+  background: linear-gradient(90deg, rgba(184,47,53,1) 26%, rgba(193,69,69,1) 100%);
+}
+.name{
+  padding-top:65px;
+  position:relative;
+  z-index:2;
+  font-size:15px;
+}
+
+#name{
+  padding:5px;
+  position:relative;
+  z-index:2;
+  font-size:15px;
+}
+
+.group img{
+  position:absolute;
+  padding-top:10px;
+  height:220px;
+  width:220px;
+  z-index:1;
+  opacity: .6;
+  
+
+}
+

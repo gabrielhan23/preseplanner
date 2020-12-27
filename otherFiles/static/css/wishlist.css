@@ -1,0 +1,21 @@
+.tree{
+  position: absolute;
+  height: 500px;
+  width: 350px;
+  opacity: 0.6;
+  z-index: -1;
+  right: 20px;
+}
+
+label{
+  padding: 10px 0;
+  font: 25px Times;
+}
+
+button{
+  margin-left: 5vw;
+}
+
+#wishlist{
+  margin: 0 5vw;
+}

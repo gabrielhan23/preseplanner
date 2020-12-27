@@ -1,0 +1,44 @@
+.background{
+  border: 150px solid black;
+  width: 110%;
+  height: 100%;
+
+  border-image: url('/static/images/background.png') 33%  repeat;
+  background: rgb(184,47,53);
+  background: linear-gradient(90deg, rgba(184,47,53,1) 26%, rgba(193,69,69,1) 100%);
+
+  position: absolute;
+  transform: translate(-4%, 0%);  
+}
+
+.section .text{
+  font-family: fantasy;
+  padding-top:150px;
+  margin-left: 50px;
+}
+
+.section img{
+  width: 400px;
+  height: 500px;
+  float: right;
+  position: absolute;
+  right: 50;
+  top: 0;
+}
+.nav-invisible{
+  display: none;
+}
+
+button{
+  display:inline-block;
+  border-radius: 10px;
+  background-color: rgb(86, 155, 95);
+  border: 3px solid rgb(86, 155, 95);
+  font-size: 20px;
+  cursor:pointer;
+  transition: .3s;
+}
+
+button:hover{
+  border-color: white;
+}
