@@ -1,0 +1,36 @@
+
+.group .person{
+  width: 20vw;
+  height: 20vh;
+  border-radius: 20px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.group{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 2vw;
+}
+
+.top{
+  width: 100vw;
+  text-align: center;
+}
+
+.top .name{
+  font-size: 30;
+  
+}
+
+body{
+  background: rgb(184,47,53);
+  background: linear-gradient(90deg, rgba(184,47,53,1) 26%, rgba(193,69,69,1) 100%);
+
+}
