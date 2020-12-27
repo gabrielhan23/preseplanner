@@ -1,0 +1,22 @@
+{% extends "template.html" %}
+
+{% block info %}
+  <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+{% endblock info %}
+
+{% block bodyContent %}
+<body class="background">
+  <div class="section">
+    <div class="text">
+      <h1 style="font-size: 45px; font-family: fantasy;">Preseplanner</h1>
+      <p style="font-size: 20px; font-family: fantasy;">Gift giving has never been easier!</p>
+      <button onclick="window.location.href='signup';" style="font-family:'Roboto',sans-serif; font-weight:200;">Try it Today!</a>
+    </div>
+    
+    <img src="{{url_for('static', filename='images/tree.png')}}" alt="Christmas tree picture">
+  </div>
+
+
+</body>
+{% endblock bodyContent %}
+

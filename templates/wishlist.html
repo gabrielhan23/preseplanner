@@ -1,0 +1,32 @@
+{% extends "template.html" %} 
+
+{% block info %}
+  <link rel="stylesheet" href="{{url_for('static', filename='css/wishlist.css')}}">
+  <div id="groupID" class="d-none">{{group.hashID}}</div>
+{% endblock info %}
+
+{% block nav %}
+  <div class="mr-5" style="cursor: pointer" onclick="addWishList()">skip for now</div>
+{% endblock nav %}
+
+{% block bodyContent %}
+<body class="background" style="background-color:#cf4a4aff">
+  <img src="{{url_for('static', filename='images/tree.png')}}" alt="Christmas tree picture" class="tree">
+
+  <div id="wishlist">
+    <label class="form-control-label" for="wish">My Wishlist for "{{group.name}}"</label>
+    <div class="wish">
+      <input type="text" name="wish" id="active-wish" class="form-control form-control-lg wishInput" placeholder="Enter gift idea" value=''>
+      <br>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary mt-2" onclick="addWishList()">Create</button>
+
+</body>
+
+
+{% endblock bodyContent %}
+
+{% block scripts %} 
+  <script src="{{url_for('static', filename='js/wishlist.js')}}"></script>
+{% endblock scripts%}

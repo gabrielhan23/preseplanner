@@ -1,0 +1,61 @@
+{% extends "template.html" %} 
+
+{% block info %}
+  <link rel="stylesheet" href="{{url_for('static', filename='css/groups.css')}}">
+{% endblock info %}
+
+{% block nav %}
+  <div class="add-button" data-toggle="modal" data-target="#addGroup">+</div>
+{% endblock %}
+
+{% block bodyContent %} 
+<body>
+  <div class="groups" id="groups">
+    {% for group in groups %}
+      <div class="group" id="{{group.hashID}}" onclick="openGroup({{group.hashID}})">
+        <img src="{{url_for('static', filename='images/g1.png')}}" alt="Present">
+        <div class="name">
+        {{group.name}}
+        </div>
+        <div id="name">
+        Group ID: {{group.hashID}}
+        </div>
+        <button class="deleteButton" style="z-index: 10"onclick="deleteGroup({{group.hashID}})">X</button>
+      </div>
+      
+    {% endfor %}
+  </div>
+  
+  <!-- Create Group Modal -->
+  <div class="modal fade" id="addGroup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Join or Create Group</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mb-2">
+        <div>
+          <label class="form-control-label" for="groupID">Join Group</label>
+          <input type="text" name="groupID" id="join-id" class="form-control form-control-lg" placeholder="Enter group ID">
+          <button type="button" class="btn btn-primary button-width mt-2" onclick="joinGroup()">Join</button>
+        </div>
+        <br>
+        <div>
+          <label class="form-control-label" for="groupID">Create Group</label>
+          <input type="text" name="groupID" id="create-name" class="form-control form-control-lg" placeholder="Enter group name">
+          <button type="button" class="btn btn-primary mt-2" onclick="createGroup()">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+{% endblock bodyContent %}
+
+{% block scripts %} 
+  <script src="{{url_for('static', filename='js/groups.js')}}"></script>
+{% endblock scripts%}

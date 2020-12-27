@@ -1,0 +1,95 @@
+{% extends "template.html" %} 
+
+{% block info %}
+  <link rel="stylesheet" href="{{url_for('static', filename='css/person.css')}}">
+  <div id="groupID" class="d-none">{{groupID}}</div>
+  <div id="userid" class="d-none">{{userid}}</div>
+{% endblock info %}
+
+{% block nav %}
+  <button onclick="goBack()" class="button-back">x</button>
+{% endblock %}
+
+{% block bodyContent %}
+<body>
+  {% if person %}
+  <div class="row">
+    <div class="column-border">
+      <h2 class="gift-title">{{person.fname}} {{person.lname}}'s Wishlist</h2>
+      {% for wish in wishes%}
+      <label class="container border-bottom border-dark pb-2">
+        <div id="{{wish.id}}-info">{{wish.name}}</div>
+        {% if wish.get_user_id == current_user_id %}
+          <input type="checkbox" checked="checked" onclick="getWish({{wish.id}})" id="{{wish.id}}-wish" class="{{wish.get_id}}">
+        {% elif wish.get_user_id %}
+          <input type="checkbox" class="other-checked" checked="checked" disabled>
+        {% else %}
+          <input type="checkbox" onclick="getWish({{wish.id}})" id="{{wish.id}}-wish"  class="{{wish.get_id}}">
+        {% endif %}
+        <span class="checkmark"></span>
+      </label>
+      {% endfor %}
+    </div>
+    <div class="column">      
+      <div class="gift-title">My Presents for {{person.fname}} {{person.lname}}</div>
+      <div id="gifts">
+
+        {% for g in gets %}
+          {% if g.user_getting_for_id== current_user_id %}
+            {% if g.wish %}
+              <div id="{{g.wish[0].id}}-gets-wish" class="gift-body">{{g.name}}
+                <div class="float-right">x</div>
+              </div>
+            {% else %}
+              <div id="{{g.id}}-gets" class="gift-body">{{g.name}}
+                <div class="float-right">x</div>
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      <input type='text' id='gift' placeholder="Add new gift..." class="gift-input gift-body"/>
+      <br>
+      <input type="button" class="btn btn-primary mt-2 mb-2 float-right" id="add" value="Add New" onclick="buttonAddWish()">
+      <div class="gift-title mt-6">Other People's Presents</div>
+      <div id="gifts-other">
+
+        {% for g in gets %}
+          {% if g.user_getting_for_id != current_user_id %}
+            {% if g.wish %}
+              <div id="{{g.wish[0].id}}-gets-wish" class="gift-body">{{g.name}}</div>
+            {% else %}
+              <div id="{{g.id}}-gets" class="gift-body">{{g.name}}</div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <div class="row">
+    <div class="full">
+      <h2>My Wishlist</h2>
+      <div id="wishlist">
+      {% for wish in wishes%}
+          <div class="wish">
+            <input type="text" name="wish" class="form-control form-control-lg wishInput" placeholder="Enter gift idea" value='{{wish.name}}'>
+            <br>
+          </div>
+      {% endfor %}
+          <div class="wish">
+            <input type="text" id="active-wish" name="wish" class="form-control form-control-lg wishInput" placeholder="Enter gift idea" value=''>
+            <br>
+          </div>
+      </div>
+      <button type="button" class="btn btn-primary m-0" onclick="addWishList()">Create</button>
+    </div>
+  </div>
+  {% endif %}
+</body>
+{% endblock bodyContent %}
+
+
+{% block scripts %} 
+  <script src="{{url_for('static', filename='js/person.js')}}"></script>
+{% endblock scripts%}
