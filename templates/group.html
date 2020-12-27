@@ -1,0 +1,39 @@
+{% extends "template.html" %} 
+
+{% block info %}
+  <link rel="stylesheet" href="{{url_for('static', filename='css/group.css')}}">
+{% endblock info %}
+
+{% block nav %}
+  <button onclick="goBack()" class="button-back">x</button>
+{% endblock %}
+
+{% block bodyContent %}
+<body>
+  <div class="top">
+    <div class="name">{{group.name}}</div>
+    <div class="hashID">Group ID: {{group.hashID}}</div>
+  </div>
+  <div class="group" id="group">
+    {% for person in people %}
+      <div class="person" onclick="openPerson({{person.id}}, {{group.hashID}})">
+        <div class="name">
+          {% if person.id == me.id %}
+          Me
+          {% else %}
+          {{person.fname}} {{person.lname}}
+          {% endif %}
+        </div>
+        <div id="name">
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  
+</body>
+{% endblock bodyContent %}
+
+{% block scripts %} 
+  <script src="{{url_for('static', filename='js/group.js')}}"></script>
+{% endblock scripts%}
